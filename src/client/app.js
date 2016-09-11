@@ -16,16 +16,22 @@ import Home from './components/views/Home.jsx';
 import UserListContainer from './components/containers/UserListContainer.jsx';
 import WidgetList from './components/containers/WidgetListContainer.jsx';
 
+// Store
+import { Provider } from 'react-redux';
+import store from './stores/default.store.js';
+
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={MainLayout}>
-    	<IndexRoute component={Home} />
-		<Route component={SearchLayout}>
-			<Route path="users" component={UserListContainer} />
-			<Route path="widgets" component={WidgetList} />
-		</Route> 
-    </Route>
-  </Router>,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={MainLayout}>
+      	<IndexRoute component={Home} />
+  		<Route component={SearchLayout}>
+  			<Route path="users" component={UserListContainer} />
+  			<Route path="widgets" component={WidgetList} />
+  		</Route> 
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

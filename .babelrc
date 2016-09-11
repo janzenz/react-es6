@@ -1,4 +1,6 @@
+// stage-0 for spread operators
+// es2015 for to allow default values on functions parameters
 {
-  "presets": ["react", "es2015"],
+  "presets": ["react", "es2015", "stage-0"],
   "plugins": ["react-hot-loader/babel"]
 }
