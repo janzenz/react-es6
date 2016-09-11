@@ -5,10 +5,12 @@ const path = require('path');
 const port = 7800;
 
 module.exports = {
+  devtool: "source-map",
   entry: [
   	"webpack-dev-server/client?http://localhost:"+port,
   	"webpack/hot/only-dev-server",
   	"./src/client/app.js",
+    "./src/client/index.html"
   ],
 
   plugins: [
@@ -38,7 +40,11 @@ module.exports = {
       {
         test: /\.html$/,
         loader: "file?name=[name].[ext]",
-      }
+      },
+      { test: /\.css$/, loader: "style!css" },
+      { test: /\.(png|jpg|woff|woff2|eot|ttf|otf)/, loader: 'url' },
+      { test: /\.svg/, loader: 'file?name=/img/[hash].[ext]?' }
+
     ],
   }
 }
